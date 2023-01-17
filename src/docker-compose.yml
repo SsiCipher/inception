@@ -13,6 +13,8 @@ services:
       - "443:443"
     volumes:
       - wp_volume:/var/www/wp_site
+    depends_on:
+      - wordpress
 
   mariadb:
     container_name: "mariadb"
@@ -35,6 +37,8 @@ services:
       - inceptionNetwork
     volumes:
       - wp_volume:/var/www/wp_site
+    depends_on:
+      - mariadb
 
 volumes:
   wp_volume:
@@ -44,7 +48,7 @@ volumes:
       type: "none"
       o: "bind"
       device: "${HOME}/data/wp_site"
-  
+
   db_volume:
     name: "db_volume"
     driver: "local"
