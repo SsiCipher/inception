@@ -15,6 +15,17 @@ services:
     volumes:
       - wp_volume:/var/www/wp_site
 
+  php:
+    container_name: "php"
+    image: php:fpm-alpine
+    restart: unless-stopped
+    env_file:
+      - ./src/.env
+    networks:
+      - inceptionNetwork
+    volumes:
+      - wp_volume:/var/www/wp_site
+
 volumes:
   wp_volume:
     name: "wp_volume"
