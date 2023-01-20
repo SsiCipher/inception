@@ -18,8 +18,7 @@ services:
 
   wordpress:
     container_name: "wordpress"
-    # build: ./requirements/wordpress
-    image: php:fpm-alpine
+    build: ./requirements/wordpress
     restart: unless-stopped
     env_file:
       - .env
