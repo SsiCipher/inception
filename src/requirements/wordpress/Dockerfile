@@ -1,5 +1,3 @@
-FROM alpine:latest
+FROM php:fpm-alpine
 
-RUN apk update && \
-	apk upgrade && \
-	apk add --no-cache php 
+RUN apk update && apk upgrade

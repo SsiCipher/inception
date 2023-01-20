@@ -16,6 +16,20 @@ services:
     depends_on:
       - wordpress
 
+  wordpress:
+    container_name: "wordpress"
+    # build: ./requirements/wordpress
+    image: php:fpm-alpine
+    restart: unless-stopped
+    env_file:
+      - .env
+    networks:
+      - inceptionNetwork
+    volumes:
+      - wp_volume:/var/www/wp_site
+    depends_on:
+      - mariadb
+
   mariadb:
     container_name: "mariadb"
     build: ./requirements/mariadb
@@ -26,19 +40,6 @@ services:
       - inceptionNetwork
     volumes:
       - db_volume:/var/lib/mysql
-
-  wordpress:
-    container_name: "wordpress"
-    build: ./requirements/wordpress
-    restart: unless-stopped
-    env_file:
-      - .env
-    networks:
-      - inceptionNetwork
-    volumes:
-      - wp_volume:/var/www/wp_site
-    depends_on:
-      - mariadb
 
 volumes:
   wp_volume:
