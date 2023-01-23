@@ -10,6 +10,8 @@ RUN openssl req -x509 -nodes -days 365 -newkey rsa:4096 \
 	-out /etc/nginx/ssl/yanab.42.fr.crt \
 	-subj "/C=MA/ST=BG/L=BG/O=inception/CN=inception"
 
+RUN adduser -S www-data -G www-data
+
 COPY conf/nginx.conf /etc/nginx/nginx.conf
 COPY conf/default.conf /etc/nginx/http.d/default.conf
 

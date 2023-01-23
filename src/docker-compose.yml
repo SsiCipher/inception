@@ -32,6 +32,7 @@ services:
   mariadb:
     container_name: "mariadb"
     build: ./requirements/mariadb
+    # image: mariadb:latest
     restart: unless-stopped
     env_file:
       - .env
