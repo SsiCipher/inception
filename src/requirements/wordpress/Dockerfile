@@ -10,7 +10,8 @@ RUN apk update && \
 	php-fileinfo php-iconv \
 	php-openssl php-opcache \
 	php-gettext php-zip \
-	php-xml wget mariadb-client
+	php-xml php-session \
+	wget mariadb-client
 
 RUN delgroup www-data && addgroup www-data
 RUN adduser -S www-data -G www-data
