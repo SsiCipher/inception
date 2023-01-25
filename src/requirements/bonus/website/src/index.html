@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+	<div class="container">
+		<h1>👋 Hello world</h1>
+		<p>How are you guys doing ?</p>
+	</div>
+
+	<script>
+		const p = document.querySelector("p");
+		let x = 0;
+		let y = 0;
+		setInterval(() => {
+			p.style.transform = `translateX(${x}) translateY(${y})`
+			x++;
+			y++;
+		}, 2000);
+	</script>
+</body>
+</html>

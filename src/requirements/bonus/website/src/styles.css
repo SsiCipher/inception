@@ -1,0 +1,18 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: inherit;
+}
+
+body {
+	font-family: sans-serif;
+}
+
+h1 {
+	color: #ede32D;
+}
+
+.container {
+	position: relative;
+}

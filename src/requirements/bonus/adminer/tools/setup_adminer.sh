@@ -1,6 +1,6 @@
 #!/bin/sh
 
-ADMINER_PATH="/var/www/wp_site/adminer"
+ADMINER_PATH="/var/adminer"
 ADMINER_URL="https://github.com/vrana/adminer/releases/download/v4.8.1/adminer-4.8.1.php"
 ADMINER_CSS="https://raw.githubusercontent.com/pepa-linha/Adminer-Design-Dark/master/adminer.css"
 
@@ -10,4 +10,4 @@ if [ ! -f $ADMINER_PATH/adminer.css ]; then wget $ADMINER_CSS -O $ADMINER_PATH/a
 
 echo "Adminer has been setup successfully"
 
-tail -f /dev/null
+php -S 0.0.0.0:4231 -t $ADMINER_PATH

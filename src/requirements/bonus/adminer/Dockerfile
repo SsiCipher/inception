@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-RUN apk update && apk upgrade && apk add --no-cache wget
+RUN apk update && apk upgrade && apk add --no-cache wget php php-session php-mysqli
 
 COPY ./tools/setup_adminer.sh /tmp/setup_adminer.sh
 

@@ -48,11 +48,35 @@ services:
       - .env
     networks:
       - inceptionNetwork
-    volumes:
-      - wp_volume:/var/www/wp_site
     depends_on:
-      - wordpress
       - mariadb
+
+  website:
+    container_name: "website"
+    build: ./requirements/bonus/website
+    restart: unless-stopped
+    env_file:
+      - .env
+    networks:
+      - inceptionNetwork
+
+  redis:
+    container_name: "redis"
+    build: ./requirements/bonus/redis
+    restart: unless-stopped
+    env_file:
+      - .env
+    networks:
+      - inceptionNetwork
+
+  # ftp:
+  #   container_name: "ftp"
+  #   build: ./requirements/bonus/ftp
+  #   restart: unless-stopped
+  #   networks:
+  #     - inceptionFtpNetwork
+  #   volumes:
+  #     - wp_volume:/var/www/wp_site
 
 volumes:
   wp_volume:
@@ -75,3 +99,6 @@ networks:
   inceptionNetwork:
     name: "inceptionNetwork"
     driver: "bridge"
+  # inceptionFtpNetwork:
+  #   name: "inceptionFtpNetwork"
+  #   driver: "bridge"
