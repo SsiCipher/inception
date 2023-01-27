@@ -14,8 +14,8 @@ define( 'WP_REDIS_TIMEOUT', 1 );
 define( 'WP_REDIS_READ_TIMEOUT', 1 );
 define( 'WP_REDIS_DATABASE', 0 );
 EOF
-	wp core install --url=$DOMAIN_NAME --title="inception" --admin_user="chef" --admin_password="chef123fehc" --admin_email="checf@mail.com" --skip-email
-	wp user create "bob" "bob@example.com" --role=author --user_pass="bob123bob"
+	wp core install --url=$DOMAIN_NAME --title=$WP_TITLE --admin_user=$WP_ADMIN_NAME --admin_password=$WP_ADMIN_PASS --admin_email=$WP_ADMIN_EMAIL --skip-email
+	wp user create --role=author $WP_USER_NAME WP_USER_EMAIL --user_pass=$WP_USER_PASS
 
 	wp plugin install redis-cache --activate
 fi
