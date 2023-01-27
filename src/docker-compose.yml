@@ -73,13 +73,15 @@ services:
     container_name: "ftp"
     build: ./requirements/bonus/ftp
     restart: unless-stopped
+    env_file:
+      - .env
     networks:
       - inceptionFtpNetwork
     volumes:
       - wp_volume:/var/www/wp_site
     ports:
       - "20-21:20-21"
-      - "5000-10000:5000-10000"
+      - "5000-5100:5000-5100"
 
 volumes:
   wp_volume:
