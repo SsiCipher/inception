@@ -83,6 +83,20 @@ services:
       - "20-21:20-21"
       - "5000-5100:5000-5100"
 
+  dozzle:
+    container_name: "dozzle"
+    # build: ./requirements/bonus/dozzle
+    image: amir20/dozzle:latest
+    restart: unless-stopped
+    env_file:
+      - .env
+    networks:
+      - inceptionDozzleNetwork
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "9999:8080"
+
 volumes:
   wp_volume:
     name: "wp_volume"
@@ -106,4 +120,7 @@ networks:
     driver: "bridge"
   inceptionFtpNetwork:
     name: "inceptionFtpNetwork"
+    driver: "bridge"
+  inceptionDozzleNetwork:
+    name: "inceptionDozzleNetwork"
     driver: "bridge"
