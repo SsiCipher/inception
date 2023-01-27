@@ -78,9 +78,8 @@ services:
     volumes:
       - wp_volume:/var/www/wp_site
     ports:
-      - "21:21"
-      - "20:20"
-      - "40000-50000:40000-50000"
+      - "20-21:20-21"
+      - "5000-10000:5000-10000"
 
 volumes:
   wp_volume:
