@@ -1,5 +1,7 @@
 COMPOSE_FILE	=	src/docker-compose.yml
 
+all: build up
+
 build:
 	docker compose -f $(COMPOSE_FILE) build
 
@@ -10,5 +12,4 @@ down:
 	docker compose -f $(COMPOSE_FILE) down
 
 fclean:
-	sudo rm -rf ~/data/wp_site/*
-	sudo rm -rf ~/data/mariadb/*
+	sudo rm -rf ~/data/*/*
