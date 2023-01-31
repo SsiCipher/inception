@@ -83,19 +83,19 @@ services:
       - "20-21:20-21"
       - "5000-5100:5000-5100"
 
-  dozzle:
-    container_name: "dozzle"
-    # build: ./requirements/bonus/dozzle
-    image: amir20/dozzle:latest
+  portainer:
+    container_name: "portainer"
+    build: ./requirements/bonus/portainer
     restart: unless-stopped
     env_file:
       - .env
-    networks:
-      - inceptionDozzleNetwork
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
     ports:
-      - "9999:8080"
+      - 9443:9443
+    networks:
+      - inceptionPortainerNetwork
+    volumes:
+      - portainer_volume:/data
+      - /var/run/docker.sock:/var/run/docker.sock
 
 volumes:
   wp_volume:
@@ -114,6 +114,14 @@ volumes:
       o: "bind"
       device: "${HOME}/data/mariadb"
 
+  portainer_volume:
+    name: "portainer_volume"
+    driver: "local"
+    driver_opts:
+      type: "none"
+      o: "bind"
+      device: "${HOME}/data/portainer"
+
 networks:
   inceptionNetwork:
     name: "inceptionNetwork"
@@ -121,6 +129,6 @@ networks:
   inceptionFtpNetwork:
     name: "inceptionFtpNetwork"
     driver: "bridge"
-  inceptionDozzleNetwork:
-    name: "inceptionDozzleNetwork"
+  inceptionPortainerNetwork:
+    name: "inceptionPortainerNetwork"
     driver: "bridge"
